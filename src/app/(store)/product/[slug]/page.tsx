@@ -13,11 +13,17 @@ async function getProduct(slug: string): Promise<Product> {
     next: {
       revalidate: 60 * 60, // 1 hour
     },
-  })
+  });
 
-  const product = await response.json()
+  const product = await response.json();
 
-  return product
+  return product;
+}
+export async function generateMetadata({ params }: ProductProps) {
+  const product = await getProduct(params.slug);
+  return {
+    title: product.title,
+  };
 }
 
 export default async function ProductPage({ params }: ProductProps) {
@@ -40,9 +46,9 @@ export default async function ProductPage({ params }: ProductProps) {
         </p>
         <div className="mt-8 flex items-center gap-3">
           <span className="inline-block rounded-full bg-violet-500 px-5 py-2.5 font-semibold">
-          {product.price.toLocaleString('pt-BR', {
-              style: 'currency',
-              currency: 'BRL',
+            {product.price.toLocaleString("pt-BR", {
+              style: "currency",
+              currency: "BRL",
               minimumFractionDigits: 0,
               maximumFractionDigits: 0,
             })}
