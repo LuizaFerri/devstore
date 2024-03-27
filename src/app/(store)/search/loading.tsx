@@ -1,3 +1,4 @@
+'use client'
 import { Skeleton } from "@/app/components/skeleton";
 import { useSearchParams } from "next/navigation";
 
