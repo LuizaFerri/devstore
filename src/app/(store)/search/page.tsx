@@ -12,7 +12,7 @@ interface SearchProps {
 }
 
 async function searchProducts(query: string): Promise<Product[]> {
-  const response = await api(`/product/search?q=${query}`, {
+  const response = await api(`/products/search?q=${query}`, {
     next: {
       revalidate: 60 * 60, 
     },
@@ -43,7 +43,7 @@ export default async function Search({ searchParams }: SearchProps) {
           return (
             <Link
               key={product.id}
-              href={`/product/${product.slug}`}
+              href={`/products/${product.slug}`}
               className="group relative rounded-lg bg-zinc-900 overflow-hidden flex justify-center items-end"
             >
               <Image

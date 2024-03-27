@@ -5,7 +5,6 @@ import colors from 'tailwindcss/colors'
 import { api } from '@/data/api'
 import { Product } from '@/data/types/product'
 import { env } from '@/env'
-import Image from 'next/image'
 
 export const runtime = 'edge'
 
@@ -19,7 +18,7 @@ export const size = {
 export const contentType = 'image/png'
 
 async function getProduct(slug: string): Promise<Product> {
-  const response = await api(`/product/${slug}`, {
+  const response = await api(`/products/${slug}`, {
     next: {
       revalidate: 60 * 15,
     },
