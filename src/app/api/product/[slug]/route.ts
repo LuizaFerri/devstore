@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import data from "../data.json";
+import data from "../../data.json";
 
 export async function GET(
   _: Request,
